@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "getting-started",
+    "wallet-registration",
+    "account-management",
+    "transactions",
+    "protocol-integration",
+    "middleware",
+    "error-handling"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Examples & Starters",
+  "root": true,
+  "pages": [
+    "react-native-starter"
+  ]
+}

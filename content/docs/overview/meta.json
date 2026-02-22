@@ -1,0 +1,12 @@
+{
+  "title": "Overview",
+  "root": true,
+  "pages": [
+    "index",
+    "about",
+    "vision",
+    "partner-program",
+    "support",
+    "changelog"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "title": "SDK",
+  "root": true,
+  "pages": [
+    "get-started",
+    "all-modules",
+    "core-module",
+    "wallet-modules",
+    "swap-modules",
+    "bridge-modules",
+    "lending-modules",
+    "fiat-modules",
+    "community-modules"
+  ]
+}

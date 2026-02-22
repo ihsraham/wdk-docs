@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  --color-fd-primary: oklch(0.637 0.237 29.23);
+  --color-fd-primary-foreground: oklch(1 0 0);
+  --color-fd-ring: oklch(0.637 0.237 29.23);
+
+  --color-fd-background: oklch(0.985 0.002 90);
+  --color-fd-foreground: oklch(0.145 0.005 90);
+  --color-fd-muted: oklch(0.96 0.005 90);
+  --color-fd-muted-foreground: oklch(0.52 0.01 90);
+}
+
+.dark {
+  --color-fd-primary: oklch(0.72 0.22 29.23);
+  --color-fd-primary-foreground: oklch(0.04 0 0);
+  --color-fd-ring: oklch(0.72 0.22 29.23);
+
+  --color-fd-background: oklch(0.12 0.005 30);
+  --color-fd-foreground: oklch(0.93 0.005 90);
+  --color-fd-muted: oklch(0.18 0.008 30);
+  --color-fd-muted-foreground: oklch(0.63 0.01 90);
+}

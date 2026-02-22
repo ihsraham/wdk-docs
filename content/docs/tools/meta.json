@@ -1,0 +1,9 @@
+{
+  "title": "Tools",
+  "root": true,
+  "pages": [
+    "indexer-api",
+    "secret-manager",
+    "price-rates"
+  ]
+}

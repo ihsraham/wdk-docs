@@ -1,0 +1,30 @@
+{
+  "name": "wdk-docs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "migrate": "node scripts/migrate-gitbook.mjs"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.0",
+    "@types/mdx": "^2.0.13",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "fumadocs-core": "^16.6.5",
+    "fumadocs-mdx": "^14.2.8",
+    "fumadocs-ui": "^16.6.5",
+    "next": "^16.1.6",
+    "postcss": "^8.5.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.0",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0"
+  }
+}

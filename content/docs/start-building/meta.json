@@ -1,0 +1,9 @@
+{
+  "title": "Start Building",
+  "root": true,
+  "pages": [
+    "nodejs-bare-quickstart",
+    "react-native-quickstart",
+    "build-with-ai"
+  ]
+}

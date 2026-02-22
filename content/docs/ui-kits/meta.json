@@ -1,0 +1,7 @@
+{
+  "title": "UI Kits",
+  "root": true,
+  "pages": [
+    "react-native-ui-kit"
+  ]
+}

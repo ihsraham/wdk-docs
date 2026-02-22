@@ -1,0 +1,78 @@
+---
+title: Swap Stonfi TON Overview
+description: Overview of the @tetherto/wdk-protocol-swap-stonfi-ton module
+---
+
+# @tetherto/wdk-protocol-swap-stonfi-ton Overview
+
+A simple package that lets TON wallet accounts swap tokens on the StonFi DEX (Decentralized Exchange). This package provides a clean API for swapping jetton tokens on the TON blockchain using the StonFi protocol.
+
+## Features
+
+- **Token Swapping**: Swap jetton tokens on the StonFi DEX on TON blockchain
+- **StonFi Integration**: Uses StonFi SDK and API for secure token exchanges
+- **Slippage Control**: Built-in slippage tolerance settings to protect against price changes
+- **Gasless Support**: Works with both standard TON wallets and gasless TON accounts
+- **Fee Management**: Built-in fee calculation and swap cost estimation
+- **Token Support**: Supports all jetton tokens available on StonFi DEX
+- **TypeScript Support**: Full TypeScript definitions included
+- **Memory Safety**: Secure transaction handling with proper error management
+
+## Supported Network
+
+This package works with TON blockchain:
+
+- **TON** (TON Network) - Native blockchain for StonFi DEX
+
+**Note**: Token support is determined by the jetton tokens available on the StonFi DEX. The protocol uses StonFi's liquidity pools to find the best swap rates.
+
+## Wallet Compatibility
+
+The swap service supports multiple TON wallet types:
+
+- **Standard TON Wallets**: `@tetherto/wdk-wallet-ton` accounts with native TON gas
+- **Gasless TON Wallets**: `@tetherto/wdk-wallet-ton-gasless` accounts with sponsored transactions
+- **Read-Only Accounts**: For querying swap costs without transaction capabilities
+
+## Key Components
+
+- **StonFi SDK Integration**: Uses official StonFi SDK for reliable swaps
+- **Gasless Integration**: Built-in support for gasless transaction execution
+- **Quote System**: Pre-transaction cost estimation and rate calculation
+- **Slippage Protection**: Configurable slippage tolerance for price protection
+- **Multi-Protocol Support**: Handles both standard and gasless wallet protocols
+
+
+## Next Steps
+
+<Cards>
+<Card title="Node.js Quickstart" href="../../../start-building/nodejs-bare-quickstart">
+Get started with WDK in a Node.js environment
+</Card>
+<Card title="WDK Stonfi Swap Protocol Configuration" href="./configuration">
+Get started with WDK's Stonfi Swap Protocol configuration
+</Card>
+<Card title="WDK Stonfi Swap Protocol API" href="./api-reference">
+Get started with WDK's Stonfi Swap Protocol API
+</Card>
+<Card title="WDK Stonfi Swap Protocol Usage" href="./usage">
+Get started with WDK's Stonfi Swap Protocol usage
+</Card>
+</Cards>
+
+***
+
+### Need Help?
+
+<Cards>
+<Card title="Discord Community" href="https://discord.gg/arYXDhHB2w">
+Connect with developers, ask questions, share your projects
+</Card>
+<Card title="GitHub Issues" href="https://github.com/tetherto/wdk-core">
+Report bugs, request features, and get technical help
+</Card>
+<Card title="Email Contact" href="mailto:wallet-info.tether.io">
+For sensitive or private matters, contact our team directly
+</Card>
+</Cards>
+

@@ -1,0 +1,8 @@
+{
+  "title": "Resources and Guides",
+  "root": true,
+  "pages": [
+    "concepts",
+    "showcase"
+  ]
+}

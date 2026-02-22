@@ -1,0 +1,9 @@
+{
+  "title": "AI",
+  "root": true,
+  "pages": [
+    "mcp-toolkit",
+    "agent-skills",
+    "openclaw"
+  ]
+}

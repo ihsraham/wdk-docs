@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "index",
+    "wallet-btc",
+    "wallet-evm",
+    "wallet-evm-erc-4337",
+    "wallet-solana",
+    "wallet-spark",
+    "wallet-ton",
+    "wallet-ton-gasless",
+    "wallet-tron",
+    "wallet-tron-gasfree"
+  ]
+}
