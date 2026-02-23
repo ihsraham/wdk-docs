@@ -32,10 +32,19 @@ Stay up to date with the latest improvements, new features, and bug fixes across
 
 ---
 
+### February 15, 2026
+
+**Changes**
+- **wallet-spark**: Added [`getIdentityKey()`](../sdk/wallet-modules/wallet-spark/api-reference.md#getidentitykey) method to [`WalletAccountReadOnlySpark`](../sdk/wallet-modules/wallet-spark/api-reference.md#walletaccountreadonlyspark) for retrieving the account's identity public key ([v1.0.0-beta.10](https://github.com/tetherto/wdk-wallet-spark/releases/tag/v1.0.0-beta.10))
+
+---
+
 ### February 14, 2026
 
 **Changes**
 - **wallet-spark**: Upgrade spark-sdk from `0.6.1` to `0.6.4` and spark bare SDK to `0.0.43` ([v1.0.0-beta.9](https://github.com/tetherto/wdk-wallet-spark/releases/tag/v1.0.0-beta.9))
+
+---
 
 ### February 12, 2026
 
@@ -61,16 +70,22 @@ Stay up to date with the latest improvements, new features, and bug fixes across
 - **[Build with AI](../start-building/build-with-ai.md)**: New guide for using AI coding assistants with WDK. Includes MCP server setup, Markdown context endpoints, project rules, and example prompts. Supports Cursor, Claude Code, GitHub Copilot, Windsurf, Cline, and Continue.
 - **[MCP Toolkit](../ai/mcp-toolkit/README.md)**: New documentation for `@tetherto/wdk-mcp-toolkit` (`v1.0.0-beta.1`). Covers the `WdkMcpServer` class, 35 built-in MCP tools across 7 categories (wallet, pricing, indexer, swap, bridge, lending, fiat), setup wizard, multi-tool configuration, and full API reference.
 
+---
+
 ### February 08, 2026
 
 **Changes**
 - **wallet-spark**: Fixed import causing wallet init failure. Upgrade spark-sdk from `0.5.7` to `0.6.1` ([v1.0.0-beta.8](https://github.com/tetherto/wdk-wallet-spark/releases/tag/v1.0.0-beta.8))
+
+---
 
 ### February 02, 2026
 
 **Changes**
 - **wallet-ton-gasless**: Added `verify` method to [`WalletAccountReadOnlyTonGasless`](../sdk/wallet-modules/wallet-ton-gasless/api-reference.md#walletaccountreadonlytongasless) ([v1.0.0-beta.4](https://github.com/tetherto/wdk-wallet-ton-gasfree/releases/tag/v1.0.0-beta.4))
 - **wallet-tron-gasfree**: Added `verify` method to [`WalletAccountReadOnlyTronGasfree`](../sdk/wallet-modules/wallet-tron-gasfree/api-reference.md#walletaccountreadonlytrongasfree) ([v1.0.0-beta.4](https://github.com/tetherto/wdk-wallet-tron-gasfree/releases/tag/v1.0.0-beta.4))
+
+---
 
 ### January 29, 2026
 
@@ -81,6 +96,8 @@ Stay up to date with the latest improvements, new features, and bug fixes across
 **Changes**
 - **wdk-indexer docs**
   - Fixed the USD₮, XAU₮ token names. 
+
+---
 
 ### January 26, 2026
 
@@ -93,6 +110,8 @@ Stay up to date with the latest improvements, new features, and bug fixes across
 - **wallet-ton**: Added `verify` method to [`WalletAccountReadOnlyTon`](../sdk/wallet-modules/wallet-ton/api-reference.md#walletaccountreadonlyton) ([v1.0.0-beta.7](https://github.com/tetherto/wdk-wallet-ton/releases/tag/v1.0.0-beta.7))
 - **wallet-tron**: Added `verify` method to [`WalletAccountReadOnlyTron`](../sdk/wallet-modules/wallet-tron/api-reference.md#walletaccountreadonlytron) ([v1.0.0-beta.4](https://github.com/tetherto/wdk-wallet-tron/releases/tag/v1.0.0-beta.4))
 - **wallet-spark**: Added `verify` method to [`WalletAccountReadOnlySpark`](../sdk/wallet-modules/wallet-spark/api-reference.md#walletaccountreadonlyspark) ([v1.0.0-beta.7](https://github.com/tetherto/wdk-wallet-spark/releases/tag/v1.0.0-beta.7))
+
+---
 
 ### January 23, 2026
 
@@ -143,11 +162,15 @@ Stay up to date with the latest improvements, new features, and bug fixes across
 - Introduced [All Modules](../sdk/all-modules.md) page in docs for comprehensive module listings
 - Reorganized documentation structure for better navigation
 
+---
+
 ### December 17, 2025
 
 **What's New**
 - **wdk-core**: Added fiat protocol support for on-ramp integrations ([v1.0.0-beta.5](https://github.com/tetherto/wdk-core/releases/tag/v1.0.0-beta.5))
 - **wdk-wallet**: Added fiat protocol integration ([v1.0.0-beta.6](https://github.com/tetherto/wdk-wallet/releases/tag/v1.0.0-beta.6))
+
+---
 
 ### December 3, 2025
 
@@ -172,6 +195,8 @@ Stay up to date with the latest improvements, new features, and bug fixes across
 **Changes**
 - **wdk-wallet**: Runtime updates and dependency synchronization ([v1.0.0-beta.5](https://github.com/tetherto/wdk-wallet/releases/tag/v1.0.0-beta.5))
 
+---
+
 ### November 12, 2025
 
 **What's New**
@@ -181,10 +206,14 @@ Stay up to date with the latest improvements, new features, and bug fixes across
 - **wallet-solana**: Fixed `punycode` module resolution issue
 - **lending-aave-evm**: Runtime compatibility updates ([v1.0.0-beta.3](https://github.com/tetherto/wdk-protocol-lending-aave-evm/releases/tag/v1.0.0-beta.3))
 
+---
+
 ### November 11, 2025
 
 **Changes**
 - **swap-velora-evm**: Runtime compatibility updates ([v1.0.0-beta.4](https://github.com/tetherto/wdk-protocol-swap-velora-evm/releases/tag/v1.0.0-beta.4))
+
+---
 
 ### November 9-10, 2025
 
@@ -198,11 +227,15 @@ Stay up to date with the latest improvements, new features, and bug fixes across
 - **wallet-evm**: Runtime updates ([v1.0.0-beta.4](https://github.com/tetherto/wdk-wallet-evm/releases/tag/v1.0.0-beta.4))
 - **wallet-tron**: Dependency and runtime updates ([v1.0.0-beta.3](https://github.com/tetherto/wdk-wallet-tron/releases/tag/v1.0.0-beta.3))
 
+---
+
 ### November 8, 2025
 
 **Changes**
 - **wdk-core**: Updated `bare-node-runtime` for improved compatibility ([v1.0.0-beta.4](https://github.com/tetherto/wdk-core/releases/tag/v1.0.0-beta.4))
 - **wallet-spark**: Updated Spark dependencies and improved `dispose` method ([v1.0.0-beta.5](https://github.com/tetherto/wdk-wallet-spark/releases/tag/v1.0.0-beta.5))
+
+---
 
 ### November 7, 2025
 
