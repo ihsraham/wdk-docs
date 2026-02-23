@@ -18,11 +18,14 @@ The Wallet Development Kit (WDK) is Tether's open-source toolkit that empowers d
 
 If you'd like to contribute or report issues, please feel free to open an issue or pull request.
 
-## PR Preview Deployment (Vercel)
+## Branch + PR Preview Deployment (Vercel)
 
-This repository uses GitHub Actions to build docs and publish a Vercel preview for each pull request:
+This repository uses GitHub Actions to build docs and publish a Vercel preview for:
 
-- Workflow: `PR Preview (Vercel)`
+- every push to `feat/fumadocs-migration`
+- every pull request update
+
+- Workflow: `Branch + PR Preview (Vercel)`
 - Check/job name: `Build + Vercel Preview`
 - Workflow file: `.github/workflows/pr-preview-vercel.yml`
 
@@ -32,7 +35,7 @@ Configure these repository secrets in **Settings → Secrets and variables → A
 
 - `VERCEL_TOKEN`
 - `VERCEL_ORG_ID`
-- `VERCEL_PROJECT_ID`
+- `VERCEL_PROJECT_ID` (optional; fallback is `prj_mwwvp0gO8zf0T8nJenMoGdFOEQJH`)
 
 ### Make It Required for Merge
 

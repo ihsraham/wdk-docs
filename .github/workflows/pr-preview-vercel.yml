@@ -1,6 +1,9 @@
-name: PR Preview (Vercel)
+name: Branch + PR Preview (Vercel)
 
 on:
+  push:
+    branches:
+      - feat/fumadocs-migration
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
@@ -19,7 +22,7 @@ jobs:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID || 'prj_mwwvp0gO8zf0T8nJenMoGdFOEQJH' }}
 
     steps:
       - name: Checkout
@@ -34,7 +37,7 @@ jobs:
       - name: Validate Vercel secrets
         run: |
           missing=0
-          for key in VERCEL_TOKEN VERCEL_ORG_ID VERCEL_PROJECT_ID; do
+          for key in VERCEL_TOKEN VERCEL_ORG_ID; do
             if [ -z "${!key}" ]; then
               echo "::error::Missing required secret: $key"
               missing=1
@@ -57,19 +60,30 @@ jobs:
       - name: Pull Vercel project settings
         run: vercel pull --yes --environment=preview --token="$VERCEL_TOKEN"
 
-      - name: Build Vercel output
-        run: vercel build --token="$VERCEL_TOKEN"
-
       - name: Deploy preview to Vercel
         id: deploy
         run: |
-          preview_url="$(vercel deploy --prebuilt --yes --token="$VERCEL_TOKEN" | tail -n 1 | tr -d '\r')"
-          case "$preview_url" in
-            http*) ;;
-            *) preview_url="https://$preview_url" ;;
-          esac
+          deploy_output="$(vercel deploy --yes --token="$VERCEL_TOKEN" 2>&1)"
+          echo "$deploy_output"
+
+          preview_url="$(echo "$deploy_output" | grep -Eo 'https://[a-zA-Z0-9-]+\.vercel\.app' | tail -n 1)"
+          if [ -z "$preview_url" ]; then
+            echo "::error::Failed to parse Vercel preview URL from deploy output."
+            exit 1
+          fi
+
           echo "preview_url=$preview_url" >> "$GITHUB_OUTPUT"
           echo "Preview URL: $preview_url"
+
+      - name: Add preview URL to workflow summary
+        run: |
+          {
+            echo "## Vercel Preview"
+            echo ""
+            echo "- URL: ${{ steps.deploy.outputs.preview_url }}"
+            echo "- Event: ${{ github.event_name }}"
+            echo "- Ref: ${{ github.ref }}"
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Comment preview URL on PR
         if: github.event_name == 'pull_request'
