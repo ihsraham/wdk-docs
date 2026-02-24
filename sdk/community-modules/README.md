@@ -29,7 +29,7 @@ Tether and the WDK Team do not endorse or assume responsibility for their code, 
 
 | Module | Type | Description | Author |
 |--------|------|-------------|--------|
-| [@utexo/wdk-wallet-rgb](https://github.com/UTEXO-Protocol/wdk-wallet-rgb) | Wallet Module |  Wallet module for RGB, Bitcoin-based smart contracts | [UTEXO](https://github.com/UTEXO-Protocol) |
+| [@utexo/wdk-wallet-rgb](https://github.com/UTEXO-Protocol/wdk-wallet-rgb) | Wallet Module | Wallet module for RGB, Bitcoin-based smart contracts | [UTEXO](https://github.com/UTEXO-Protocol) |
 | [@base58-io/wdk-wallet-cosmos](https://github.com/base58-io/wdk-wallet-cosmos) | Wallet Module | Wallet module for Cosmos-compatible blockchains | [Base58](https://base58.io/) |
 
 ---
