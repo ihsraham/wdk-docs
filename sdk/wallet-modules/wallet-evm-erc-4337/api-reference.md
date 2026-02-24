@@ -613,7 +613,7 @@ const readOnlyAccount = new WalletAccountReadOnlyEvmErc4337('0x...', {
 ### Static Methods
 
 | Method | Description | Returns |
-|--------|-------------|---------||
+|--------|-------------|---------|
 | `predictSafeAddress(owner, config)` | Predicts the Safe address for a given owner without instantiating an account | `string` |
 
 #### `predictSafeAddress(owner, config)` (static)
