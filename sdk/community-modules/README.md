@@ -31,7 +31,6 @@ Tether and the WDK Team do not endorse or assume responsibility for their code, 
 |--------|------|-------------|--------|
 | [@utexo/wdk-wallet-rgb](https://github.com/UTEXO-Protocol/wdk-wallet-rgb) | Wallet Module | Wallet module for RGB, Bitcoin-based smart contracts | [UTEXO](https://github.com/UTEXO-Protocol) |
 | [@base58-io/wdk-wallet-cosmos](https://github.com/base58-io/wdk-wallet-cosmos) | Wallet Module | Wallet module for Cosmos-compatible blockchains | [Base58](https://base58.io/) |
-| [@semanticio/wdk-wallet-evm-x402-facilitator](https://www.npmjs.com/package/@semanticio/wdk-wallet-evm-x402-facilitator) | Wallet Module | Wraps a WDK EVM wallet as an [x402](../../ai/x402.md) facilitator signer for in-process payment verification and settlement | [SemanticPay](https://github.com/SemanticPay) |
 
 ---
 
