@@ -74,7 +74,7 @@ const wallet = new WalletManagerEvmErc4337(seedPhrase, {
   paymasterUrl: 'https://api.candide.dev/public/v3/ethereum',
   paymasterAddress: '0x8b1f6cb5d062aa2ce8d581942bbb960420d875ba',
   paymasterToken: {
-    address: '0xdAC17F958D2ee523a2206206994597C13D831ec7' // USD₮
+    address: '0xdAC17F958D2ee523a2206206994597C13D831ec7' // USDT
   },
   transferMaxFee: 100000 // Optional: max fee in token units
 })
@@ -449,9 +449,9 @@ Transfers ERC20 tokens via UserOperation.
 **Example:**
 ```javascript
 const result = await account.transfer({
-  token: '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
+  token: '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USDT
   recipient: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
-  amount: 1000000 // 1 USD₮ (6 decimals)
+  amount: 1000000 // 1 USDT (6 decimals)
 }, {
   transferMaxFee: 50000 // Override max fee for this call
 })
@@ -514,8 +514,8 @@ Returns balances for multiple ERC20 tokens in one call.
 **Example:**
 ```javascript
 const tokenBalances = await account.getTokenBalances([
-  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
-  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USDT
+  '0x68749665FF8D2d112Fa859AA293F07A622782F38'  // XAUT
 ])
 console.log('Token balances:', tokenBalances)
 ```
@@ -552,7 +552,7 @@ Approves a spender to spend ERC20 tokens on behalf of the Safe account.
 const result = await account.approve({
   token: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
   spender: '0xSpenderContract...',
-  amount: 1000000n // 1 USD₮
+  amount: 1000000n // 1 USDT
 })
 console.log('Approval hash:', result.hash)
 ```
@@ -806,8 +806,8 @@ Returns balances for multiple ERC20 tokens.
 **Example:**
 ```javascript
 const tokenBalances = await readOnlyAccount.getTokenBalances([
-  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
-  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USDT
+  '0x68749665FF8D2d112Fa859AA293F07A622782F38'  // XAUT
 ])
 console.log('Token balances:', tokenBalances)
 ```

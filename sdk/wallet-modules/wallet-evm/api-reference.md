@@ -395,9 +395,9 @@ Transfers ERC20 tokens to another address using the standard transfer function.
 **Example:**
 ```javascript
 const result = await account.transfer({
-  token: '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
+  token: '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USDT
   recipient: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
-  amount: 1000000 // 1 USD₮ (6 decimals)
+  amount: 1000000 // 1 USDT (6 decimals)
 })
 console.log('Transfer hash:', result.hash)
 console.log('Transfer fee:', result.fee, 'wei')
@@ -449,7 +449,7 @@ Returns the balance of a specific ERC20 token using the balanceOf function.
 
 **Example:**
 ```javascript
-// Get USD₮ balance
+// Get USDT balance
 const usdtBalance = await account.getTokenBalance('0xdAC17F958D2ee523a2206206994597C13D831ec7')
 console.log('USDT balance:', usdtBalance) // In 6 decimal places
 console.log('USDT balance formatted:', usdtBalance / 1000000, 'USDT')
@@ -468,12 +468,12 @@ Returns balances for multiple ERC20 tokens in one call.
 **Example:**
 ```javascript
 const balances = await account.getTokenBalances([
-  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
-  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USDT
+  '0x68749665FF8D2d112Fa859AA293F07A622782F38'  // XAUT
 ])
 
 console.log('USDT:', balances['0xdAC17F958D2ee523a2206206994597C13D831ec7'])
-console.log('USDC:', balances['0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'])
+console.log('XAUT:', balances['0x68749665FF8D2d112Fa859AA293F07A622782F38'])
 ```
 
 #### `approve(options)`
@@ -681,8 +681,8 @@ Returns balances for multiple ERC20 tokens.
 **Example:**
 ```javascript
 const balances = await readOnlyAccount.getTokenBalances([
-  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
-  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USDT
+  '0x68749665FF8D2d112Fa859AA293F07A622782F38'  // XAUT
 ])
 console.log('Balances:', balances)
 ```

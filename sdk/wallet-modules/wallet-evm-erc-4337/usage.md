@@ -128,8 +128,8 @@ console.log('USDT balance:', tokenBalance);
 
 // Get balances for multiple ERC20 tokens
 const tokenBalances = await account.getTokenBalances([
-  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
-  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USDT
+  '0x68749665FF8D2d112Fa859AA293F07A622782F38'  // XAUT
 ])
 console.log('Multi-token balances:', tokenBalances)
 
@@ -173,8 +173,8 @@ console.log('USDT balance:', tokenBalance)
 
 // Check balances for multiple ERC20 tokens
 const tokenBalances = await readOnlyAccount.getTokenBalances([
-  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
-  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USDT
+  '0x68749665FF8D2d112Fa859AA293F07A622782F38'  // XAUT
 ])
 console.log('Multi-token balances:', tokenBalances)
 

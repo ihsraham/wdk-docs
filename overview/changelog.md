@@ -27,7 +27,7 @@ Stay up to date with the latest improvements, new features, and bug fixes across
 ### February 26, 2026
 
 **Changes**
-- **wdk-protocol-bridge-usdt0-evm** ([v1.0.0-beta.3](https://github.com/tetherto/wdk-protocol-bridge-usdt0-evm/releases/tag/v1.0.0-beta.3)): Updated `BridgeOptions` with optional `oftContractAddress` and `dstEid` overrides, and expanded bridge routing coverage including Solana destination support.
+- **wdk-protocol-bridge-usdt0-evm** ([v1.0.0-beta.3](https://github.com/tetherto/wdk-protocol-bridge-usdt0-evm/releases/tag/v1.0.0-beta.3)): Added per-call `BridgeOptions` overrides (`oftContractAddress`, `dstEid`) and expanded routing from EVM source chains to EVM plus non-EVM destinations (Solana, TON, TRON).
 
 ---
 

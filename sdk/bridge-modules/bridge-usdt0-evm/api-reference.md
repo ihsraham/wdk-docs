@@ -92,12 +92,12 @@ const result = await bridgeProtocol.bridge({
   targetChain: 'arbitrum',
   recipient: '0x...', // Recipient address
   token: '0x...', // ₮ contract address
-  amount: 1000000000000000000n
+  amount: 1000000n
 })
 
 console.log('Bridge hash:', result.hash)
 console.log('Approve hash:', result.approveHash)
-console.log('Reset allowance hash:', result.resetAllowanceHash) // Only for USD₮ on Ethereum
+console.log('Reset allowance hash:', result.resetAllowanceHash) // Only for USDT on Ethereum
 console.log('Total fee:', result.fee)
 console.log('Bridge fee:', result.bridgeFee)
 
@@ -105,8 +105,8 @@ console.log('Bridge fee:', result.bridgeFee)
 const result2 = await bridgeProtocol.bridge({
   targetChain: 'arbitrum',
   recipient: '0x...', // Recipient address
-  token: '0x...', // USD₮ contract address
-  amount: 1000000000000000000n
+  token: '0x...', // USDT contract address
+  amount: 1000000n
 }, {
   paymasterToken: { address: '0x...' }, // Paymaster token configuration
   bridgeMaxFee: 1000000000000000n
@@ -134,8 +134,8 @@ Estimates the cost of a bridge operation without executing it.
 const quote = await bridgeProtocol.quoteBridge({
   targetChain: 'polygon',
   recipient: '0x...', // Recipient address
-  token: '0x...', // USD₮ contract address
-  amount: 1000000000000000000n
+  token: '0x...', // USDT contract address
+  amount: 1000000n
 })
 
 console.log('Estimated fee:', quote.fee, 'wei')
@@ -149,8 +149,8 @@ if (quote.fee + quote.bridgeFee > 1000000000000000n) {
   const result = await bridgeProtocol.bridge({
     targetChain: 'polygon',
     recipient: '0x...', // Recipient address
-    token: '0x...', // USD₮ contract address
-    amount: 1000000000000000000n
+    token: '0x...', // USDT contract address
+    amount: 1000000n
   })
 }
 ```
@@ -178,7 +178,7 @@ interface BridgeResult {
   fee: bigint;                      // Total gas cost in wei
   bridgeFee: bigint;                // Bridge protocol fee in wei
   approveHash?: string;             // Approve transaction hash (standard accounts only)
-  resetAllowanceHash?: string;      // Reset allowance hash (USD₮ on Ethereum only)
+  resetAllowanceHash?: string;      // Reset allowance hash (USDT on Ethereum only)
 }
 ```
 
@@ -231,8 +231,8 @@ The bridge protocol supports the following chains:
 **Destination Chains:**
 - **EVM destinations**: same as source-chain set above
 - `'solana'` (EID: 30168)
-- `'ton'` (Chain ID: 30343)
-- `'tron'` (Chain ID: 728126428)
+- `'ton'` (EID: 30343)
+- `'tron'` (EID: 30420)
 
 ## Error Handling
 
@@ -243,8 +243,8 @@ try {
   const result = await bridgeProtocol.bridge({
     targetChain: 'arbitrum',
     recipient: '0x...', // Recipient address
-    token: '0x...', // USD₮ contract address
-    amount: 1000000000000000000n
+    token: '0x...', // USDT contract address
+    amount: 1000000n
   })
 } catch (error) {
   if (error.message.includes('not supported')) {
@@ -288,8 +288,8 @@ async function bridgeTokens() {
   const quote = await bridgeProtocol.quoteBridge({
     targetChain: 'arbitrum',
     recipient: '0x...', // Recipient address
-    token: '0x...', // USD₮ contract address
-    amount: 1000000000000000000n
+    token: '0x...', // USDT contract address
+    amount: 1000000n
   })
   
   console.log('Bridge quote:', quote)
@@ -298,8 +298,8 @@ async function bridgeTokens() {
   const result = await bridgeProtocol.bridge({
     targetChain: 'arbitrum',
     recipient: '0x...', // Recipient address
-    token: '0x...', // USD₮ contract address
-    amount: 1000000000000000000n
+    token: '0x...', // USDT contract address
+    amount: 1000000n
   })
   
   console.log('Bridge result:', result)
@@ -313,8 +313,8 @@ async function bridgeTokens() {
 ```javascript
 async function bridgeToMultipleChains(bridgeProtocol) {
   const chains = ['arbitrum', 'polygon', 'ethereum']
-  const token = '0x...' // USD₮ contract address
-  const amount = 1000000000000000000n
+  const token = '0x...' // USDT contract address
+  const amount = 1000000n
   const recipient = '0x...' // Recipient address
   
   const results = []
@@ -378,8 +378,8 @@ async function gaslessBridge() {
   const result = await bridgeProtocol.bridge({
     targetChain: 'polygon',
     recipient: '0x...', // Recipient address
-    token: '0x...', // USD₮ contract address
-    amount: 1000000000000000000n
+    token: '0x...', // USDT contract address
+    amount: 1000000n
   }, {
     paymasterToken: { address: '0x...' } // Paymaster token configuration
   })
@@ -444,6 +444,5 @@ async function gaslessBridge() {
 ### Need Help?
 
 {% include "../../../.gitbook/includes/support-cards.md" %}
-
 
 

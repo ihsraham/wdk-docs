@@ -25,11 +25,11 @@ A simple package that lets EVM wallet accounts bridge USD₮0 tokens across chai
 
 - **Cross-Chain Bridge**: Move USD₮0 tokens between supported blockchains
 - **LayerZero Integration**: Uses LayerZero protocol for secure cross-chain transfers
-- **Expanded Multi-Chain Support**: Bridge across a broad set of EVM routes, including Ethereum, Arbitrum, Optimism, Polygon, Berachain, and more
+- **Expanded Multi-Chain Support**: Bridge across 25+ networks including Ethereum, Arbitrum, Optimism, Polygon, Berachain, Monad, and more
 - **Non-EVM Destinations**: Bridge from EVM chains to Solana, TON, and TRON
 - **Account Abstraction**: Works with both standard EVM wallets and ERC-4337 smart accounts
 - **Fee Management**: Built-in fee calculation and bridge cost estimation
-- **Token Support**: Supports USD₮ and other USD₮0 ecosystem tokens
+- **Token Support**: Supports USD₮0 and XAU₮0 (Tether Gold) across supported routes
 - **Route Overrides**: Optional per-call `oftContractAddress` and `dstEid` overrides in `BridgeOptions`
 - **TypeScript Support**: Full TypeScript definitions included
 - **Memory Safety**: Secure transaction handling with proper error management
@@ -141,6 +141,5 @@ This package supports bridging from EVM source chains to EVM and non-EVM destina
 ### Need Help?
 
 {% include "../../../.gitbook/includes/support-cards.md" %}
-
 
 

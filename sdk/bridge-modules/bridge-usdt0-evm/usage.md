@@ -53,7 +53,7 @@ const result = await bridgeProtocol.bridge({
   targetChain: 'arbitrum', // Destination chain
   recipient: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6', // Recipient address
   token: '0xdac17f958d2ee523a2206206994597c13d831ec7', // Token contract address
-  amount: 1000000000000000000n // Amount to bridge (1 token in base units)
+  amount: 1000000n // Amount to bridge (1 USDT in 6 decimals)
 })
 
 console.log('Bridge transaction hash:', result.hash)
@@ -69,7 +69,7 @@ const quote = await bridgeProtocol.quoteBridge({
   targetChain: 'polygon',
   recipient: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
   token: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-  amount: 1000000000000000000n
+  amount: 1000000n
 })
 
 console.log('Estimated fee:', quote.fee, 'wei')
@@ -105,8 +105,8 @@ console.log('Bridge fee:', quote.bridgeFee, 'wei')
 ### Destination Chains
 - **All supported EVM source chains** (token-dependent by deployed contracts)
 - **Solana** (EID: 30168)
-- **TON** (Chain ID: 30343)
-- **TRON** (Chain ID: 728126428)
+- **TON** (EID: 30343)
+- **TRON** (EID: 30420)
 
 ## Bridge Operations
 
@@ -118,13 +118,13 @@ const result = await bridgeProtocol.bridge({
   targetChain: 'arbitrum',
   recipient: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
   token: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-  amount: 1000000000000000000n
+  amount: 1000000n
 })
 
 // Result includes separate transaction hashes
 console.log('Bridge hash:', result.hash)
 console.log('Approve hash:', result.approveHash)
-console.log('Reset allowance hash:', result.resetAllowanceHash) // Only for USD₮ on Ethereum
+console.log('Reset allowance hash:', result.resetAllowanceHash) // Only for USDT on Ethereum
 console.log('Total fee:', result.fee)
 console.log('Bridge fee:', result.bridgeFee)
 ```
@@ -137,7 +137,7 @@ const result = await bridgeProtocol.bridge({
   targetChain: 'arbitrum',
   recipient: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
   token: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-  amount: 1000000000000000000n
+  amount: 1000000n
 }, {
   paymasterToken: { address: '0x...' }, // Paymaster token for gasless transactions
   bridgeMaxFee: 1000000000000000n // Maximum bridge fee
@@ -156,11 +156,32 @@ const solanaResult = await bridgeProtocol.bridge({
   targetChain: 'solana',
   recipient: 'HyXJcgYpURfDhgzuyRL7zxP4FhLg7LZQMeDrR4MXZcMN', // Solana base58 address
   token: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-  amount: 1000000n // 1 USD₮ in 6 decimals
+  amount: 1000000n // 1 USDT in 6 decimals
 })
 
 console.log('Solana bridge hash:', solanaResult.hash)
 console.log('Bridge fee:', solanaResult.bridgeFee)
+```
+
+### Non-EVM Destination (TON / TRON)
+
+```javascript
+const tonResult = await bridgeProtocol.bridge({
+  targetChain: 'ton',
+  recipient: 'EQAd31gAUhdO0d0NZsNb_cGl_Maa9PSuNhVLE9z8bBSjX6Gq', // TON address
+  token: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+  amount: 1000000n // 1 USDT in 6 decimals
+})
+
+const tronResult = await bridgeProtocol.bridge({
+  targetChain: 'tron',
+  recipient: 'TFG4wBaDQ8sHWWP1ACeSGnoNR6RRzevLPt', // TRON address
+  token: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+  amount: 1000000n // 1 USDT in 6 decimals
+})
+
+console.log('TON bridge hash:', tonResult.hash)
+console.log('TRON bridge hash:', tronResult.hash)
 ```
 
 ### BridgeOptions Overrides
@@ -171,7 +192,7 @@ const customResult = await bridgeProtocol.bridge({
   targetChain: 'arbitrum',
   recipient: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
   token: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-  amount: 1000000000000000000n,
+  amount: 1000000n,
   oftContractAddress: '0xYourCustomOftContractAddress',
   dstEid: 30110
 })
@@ -182,7 +203,7 @@ const customQuote = await bridgeProtocol.quoteBridge({
   targetChain: 'arbitrum',
   recipient: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
   token: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-  amount: 1000000000000000000n,
+  amount: 1000000n,
   oftContractAddress: '0xYourCustomOftContractAddress',
   dstEid: 30110
 })
@@ -198,7 +219,7 @@ try {
     targetChain: 'arbitrum',
     recipient: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
     token: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-    amount: 1000000000000000000n
+    amount: 1000000n
   })
   console.log('Bridge successful:', result.hash)
 } catch (error) {
@@ -252,7 +273,7 @@ async function setupBridge() {
 async function bridgeToMultipleChains(bridgeProtocol) {
   const chains = ['arbitrum', 'polygon', 'berachain']
   const token = '0xdac17f958d2ee523a2206206994597c13d831ec7'
-  const amount = 1000000000000000000n
+  const amount = 1000000n
   const recipient = '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6'
   
   for (const chain of chains) {
@@ -409,5 +430,4 @@ async function bridgeWithValidation(bridgeProtocol, targetChain, recipient, toke
 ### Need Help?
 
 {% include "../../../.gitbook/includes/support-cards.md" %}
-
 

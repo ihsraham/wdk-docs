@@ -92,8 +92,8 @@ try {
   const result = await bridgeProtocol.bridge({
     targetChain: 'arbitrum',
     recipient: '0x...', // Recipient address
-    token: '0x...', // USD₮ contract address
-    amount: 1000000000000000000n
+    token: '0x...', // USDT contract address
+    amount: 1000000n
   })
 } catch (error) {
   if (error.message.includes('Exceeded maximum fee')) {
@@ -137,8 +137,8 @@ When using ERC-4337 accounts, you can override configuration options during brid
 const result = await bridgeProtocol.bridge({
   targetChain: 'arbitrum',
   recipient: '0x...', // Recipient address
-  token: '0x...', // USD₮ contract address
-  amount: 1000000000000000000n
+  token: '0x...', // USDT contract address
+  amount: 1000000n
 }, {
   paymasterToken: { address: '0x...' }, // Paymaster token for gasless transactions
   bridgeMaxFee: 1000000000000000n // Override maximum bridge fee
@@ -158,8 +158,8 @@ The `paymasterToken` option specifies which token to use for paying gas fees in 
 const result = await bridgeProtocol.bridge({
   targetChain: 'arbitrum',
   recipient: '0x...', // Recipient address
-  token: '0x...', // USD₮ contract address
-  amount: 1000000000000000000n
+  token: '0x...', // USDT contract address
+  amount: 1000000n
 }, {
   paymasterToken: {
     address: '0x...' // Paymaster token address
@@ -196,8 +196,8 @@ When calling the bridge method, you need to provide bridge options:
 const bridgeOptions = {
   targetChain: 'arbitrum', // Destination chain name
   recipient: '0x...', // Recipient address
-  token: '0x...', // USD₮ contract address
-  amount: 1000000000000000000n, // Amount to bridge in base units
+  token: '0x...', // USDT contract address
+  amount: 1000000n, // Amount to bridge in base units
   oftContractAddress: '0x...', // Optional custom OFT contract address
   dstEid: 30110 // Optional LayerZero destination endpoint ID override
 }
@@ -255,8 +255,8 @@ try {
   const result = await bridgeProtocol.bridge({
     targetChain: 'invalid-chain',
     recipient: '0x...', // Recipient address
-    token: '0x...', // USD₮ contract address
-    amount: 1000000000000000000n
+    token: '0x...', // USDT contract address
+    amount: 1000000n
   })
 } catch (error) {
   if (error.message.includes('not supported')) {
