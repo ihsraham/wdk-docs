@@ -263,7 +263,9 @@ const account = new WalletAccountEvmErc4337(seedPhrase, "0'/0/0", {
 | `predictSafeAddress(owner, config)` | (static) Predicts the Safe address for a given owner | `string` | - |
 | `getAddress()` | Returns the Safe account's address | `Promise<string>` | - |
 | `sign(message)` | Signs a message using the account's private key | `Promise<string>` | - |
+| `signTypedData(typedData)` | Signs typed data according to EIP-712 | `Promise<string>` | - |
 | `verify(message, signature)` | Verifies a message signature | `Promise<boolean>` | - |
+| `verifyTypedData(typedData, signature)` | Verifies a typed data signature (EIP-712) | `Promise<boolean>` | - |
 | `sendTransaction(tx, config?)` | Sends a transaction via UserOperation | `Promise<{hash: string, fee: bigint}>` | If fee exceeds max |
 | `quoteSendTransaction(tx, config?)` | Estimates the fee for a UserOperation | `Promise<{fee: bigint}>` | - |
 | `transfer(options, config?)` | Transfers ERC20 tokens via UserOperation | `Promise<{hash: string, fee: bigint}>` | If fee exceeds max |
@@ -271,6 +273,7 @@ const account = new WalletAccountEvmErc4337(seedPhrase, "0'/0/0", {
 | `approve(options)` | Approves a spender to spend ERC20 tokens | `Promise<{hash: string, fee: bigint}>` | - |
 | `getBalance()` | Returns the native token balance (in wei) | `Promise<bigint>` | - |
 | `getTokenBalance(tokenAddress)` | Returns the balance of a specific ERC20 token | `Promise<bigint>` | - |
+| `getTokenBalances(tokenAddresses)` | Returns balances for multiple ERC20 tokens | `Promise<Record<string, bigint>>` | - |
 | `getPaymasterTokenBalance()` | Returns the paymaster token balance | `Promise<bigint>` | - |
 | `getAllowance(token, spender)` | Returns current token allowance for a spender | `Promise<bigint>` | - |
 | `getTransactionReceipt(hash)` | Returns a transaction receipt | `Promise<EvmTransactionReceipt \| null>` | - |
@@ -304,6 +307,41 @@ const signature = await account.sign(message)
 console.log('Signature:', signature)
 ```
 
+##### `signTypedData(typedData)`
+Signs typed data according to [EIP-712](https://eips.ethereum.org/EIPS/eip-712).
+
+**Parameters:**
+- `typedData` (TypedData): The typed data to sign
+
+**Returns:** `Promise<string>` - The typed data signature
+
+**Example:**
+```javascript
+const typedData = {
+  domain: {
+    name: 'MyDApp',
+    version: '1',
+    chainId: 1,
+    verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC'
+  },
+  types: {
+    Mail: [
+      { name: 'from', type: 'address' },
+      { name: 'to', type: 'address' },
+      { name: 'contents', type: 'string' }
+    ]
+  },
+  message: {
+    from: '0xAlice...',
+    to: '0xBob...',
+    contents: 'Hello Bob!'
+  }
+}
+
+const signature = await account.signTypedData(typedData)
+console.log('Typed data signature:', signature)
+```
+
 ##### `verify(message, signature)`
 Verifies a message signature against the underlying EOA address.
 
@@ -317,6 +355,21 @@ Verifies a message signature against the underlying EOA address.
 ```javascript
 const isValid = await account.verify(message, signature)
 console.log('Signature valid:', isValid)
+```
+
+##### `verifyTypedData(typedData, signature)`
+Verifies a typed data signature according to [EIP-712](https://eips.ethereum.org/EIPS/eip-712).
+
+**Parameters:**
+- `typedData` (TypedData): The typed data that was signed
+- `signature` (string): The signature to verify
+
+**Returns:** `Promise<boolean>` - True if signature is valid
+
+**Example:**
+```javascript
+const isValid = await account.verifyTypedData(typedData, signature)
+console.log('Typed data signature valid:', isValid)
 ```
 
 ##### `sendTransaction(tx, config?)`
@@ -448,6 +501,23 @@ Returns the balance of a specific ERC20 token in the Safe account.
 ```javascript
 const tokenBalance = await account.getTokenBalance('0xdAC17F958D2ee523a2206206994597C13D831ec7')
 console.log('USDT balance:', tokenBalance) // In 6 decimal units
+```
+
+##### `getTokenBalances(tokenAddresses)`
+Returns balances for multiple ERC20 tokens in one call.
+
+**Parameters:**
+- `tokenAddresses` (string[]): List of ERC20 token contract addresses
+
+**Returns:** `Promise<Record<string, bigint>>` - Object mapping each token address to its balance in base units
+
+**Example:**
+```javascript
+const tokenBalances = await account.getTokenBalances([
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
+  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+])
+console.log('Token balances:', tokenBalances)
 ```
 
 ##### `getPaymasterTokenBalance()`
@@ -648,8 +718,10 @@ const sameAddress = WalletAccountEvmErc4337.predictSafeAddress(
 |--------|-------------|---------|--------|
 | `getAddress()` | Returns the Safe account's address | `Promise<string>` | - |
 | `verify(message, signature)` | Verifies a message signature | `Promise<boolean>` | - |
+| `verifyTypedData(typedData, signature)` | Verifies a typed data signature (EIP-712) | `Promise<boolean>` | - |
 | `getBalance()` | Returns the native token balance (in wei) | `Promise<bigint>` | - |
 | `getTokenBalance(tokenAddress)` | Returns the balance of a specific ERC20 token | `Promise<bigint>` | - |
+| `getTokenBalances(tokenAddresses)` | Returns balances for multiple ERC20 tokens | `Promise<Record<string, bigint>>` | - |
 | `getPaymasterTokenBalance()` | Returns the paymaster token balance | `Promise<bigint>` | - |
 | `getAllowance(token, spender)` | Returns current token allowance for a spender | `Promise<bigint>` | - |
 | `quoteSendTransaction(tx, config?)` | Estimates the fee for a UserOperation | `Promise<{fee: bigint}>` | If simulation fails |
@@ -683,6 +755,21 @@ const isValid = await readOnlyAccount.verify(message, signature)
 console.log('Signature valid:', isValid)
 ```
 
+##### `verifyTypedData(typedData, signature)`
+Verifies a typed data signature according to [EIP-712](https://eips.ethereum.org/EIPS/eip-712).
+
+**Parameters:**
+- `typedData` (TypedData): The typed data that was signed
+- `signature` (string): The signature to verify
+
+**Returns:** `Promise<boolean>` - True if signature is valid
+
+**Example:**
+```javascript
+const isValid = await readOnlyAccount.verifyTypedData(typedData, signature)
+console.log('Typed data signature valid:', isValid)
+```
+
 ##### `getBalance()`
 Returns the Safe account's native token balance.
 
@@ -706,6 +793,23 @@ Returns the balance of a specific ERC20 token.
 ```javascript
 const tokenBalance = await readOnlyAccount.getTokenBalance('0xdAC17F958D2ee523a2206206994597C13D831ec7')
 console.log('USDT balance:', tokenBalance)
+```
+
+##### `getTokenBalances(tokenAddresses)`
+Returns balances for multiple ERC20 tokens.
+
+**Parameters:**
+- `tokenAddresses` (string[]): List of ERC20 token contract addresses
+
+**Returns:** `Promise<Record<string, bigint>>` - Object mapping each token address to its balance in base units
+
+**Example:**
+```javascript
+const tokenBalances = await readOnlyAccount.getTokenBalances([
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
+  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+])
+console.log('Token balances:', tokenBalances)
 ```
 
 ##### `getPaymasterTokenBalance()`
@@ -818,6 +922,45 @@ if (receipt) {
 ```
 
 ## Types
+
+The following types are exported from `@tetherto/wdk-wallet-evm-erc-4337` and can be imported directly.
+
+**Exported configuration subtypes:**
+- `EvmErc4337WalletCommonConfig`
+- `EvmErc4337WalletPaymasterTokenConfig`
+- `EvmErc4337WalletSponsorshipPolicyConfig`
+- `EvmErc4337WalletNativeCoinsConfig`
+
+### TypedData
+
+```typescript
+interface TypedData {
+  domain: TypedDataDomain;                           // The domain separator
+  types: Record<string, TypedDataField[]>;           // The type definitions
+  message: Record<string, unknown>;                  // The message data
+}
+```
+
+### TypedDataDomain
+
+```typescript
+interface TypedDataDomain {
+  name?: string;                     // The domain name (e.g., the DApp name)
+  version?: string;                  // The domain version
+  chainId?: number | bigint;         // The chain ID
+  verifyingContract?: string;        // The verifying contract address
+  salt?: string;                     // An optional salt
+}
+```
+
+### TypedDataField
+
+```typescript
+interface TypedDataField {
+  name: string;                      // The field name
+  type: string;                      // The field type (e.g., 'address', 'uint256', 'string')
+}
+```
 
 ### EvmErc4337WalletConfig
 

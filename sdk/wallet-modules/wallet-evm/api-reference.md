@@ -217,6 +217,7 @@ const account = new WalletAccountEvm(seedPhrase, "0'/0/0", {
 | `quoteTransfer(options)` | Estimates the fee for an ERC20 transfer | `Promise<{fee: bigint}>` | If no provider |
 | `getBalance()` | Returns the native token balance (in wei) | `Promise<bigint>` | If no provider |
 | `getTokenBalance(tokenAddress)` | Returns the balance of a specific ERC20 token | `Promise<bigint>` | If no provider |
+| `getTokenBalances(tokenAddresses)` | Returns balances for multiple ERC20 tokens | `Promise<Record<string, bigint>>` | If no provider |
 | `approve(options)` | Approves a spender to spend tokens | `Promise<{hash: string, fee: bigint}>` | If no provider |
 | `getAllowance(token, spender)` | Returns current allowance for a spender | `Promise<bigint>` | If no provider |
 | `getTransactionReceipt(hash)` | Returns a transaction's receipt | `Promise<EvmTransactionReceipt \| null>` | If no provider |
@@ -454,6 +455,27 @@ console.log('USDT balance:', usdtBalance) // In 6 decimal places
 console.log('USDT balance formatted:', usdtBalance / 1000000, 'USDT')
 ```
 
+#### `getTokenBalances(tokenAddresses)`
+Returns balances for multiple ERC20 tokens in one call.
+
+**Parameters:**
+- `tokenAddresses` (string[]): List of ERC20 token contract addresses
+
+**Returns:** `Promise<Record<string, bigint>>` - Object mapping each token address to its balance in base units
+
+**Throws:** Error if no provider is configured
+
+**Example:**
+```javascript
+const balances = await account.getTokenBalances([
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
+  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+])
+
+console.log('USDT:', balances['0xdAC17F958D2ee523a2206206994597C13D831ec7'])
+console.log('USDC:', balances['0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'])
+```
+
 #### `approve(options)`
 Approves a specific amount of tokens to a spender.
 
@@ -598,6 +620,7 @@ const readOnlyAccount = new WalletAccountReadOnlyEvm('0x742d35Cc6634C0532925a3b8
 | `getAddress()` | Returns the account's address | `Promise<string>` | - |
 | `getBalance()` | Returns the native token balance (in wei) | `Promise<bigint>` | If no provider |
 | `getTokenBalance(tokenAddress)` | Returns the balance of a specific ERC20 token | `Promise<bigint>` | If no provider |
+| `getTokenBalances(tokenAddresses)` | Returns balances for multiple ERC20 tokens | `Promise<Record<string, bigint>>` | If no provider |
 | `quoteSendTransaction(tx)` | Estimates the fee for an EVM transaction | `Promise<{fee: bigint}>` | If no provider |
 | `quoteTransfer(options)` | Estimates the fee for an ERC20 transfer | `Promise<{fee: bigint}>` | If no provider |
 | `verify(message, signature)` | Verifies a message signature | `Promise<boolean>` | - |
@@ -643,6 +666,25 @@ Returns the balance of a specific ERC20 token.
 ```javascript
 const tokenBalance = await readOnlyAccount.getTokenBalance('0xdAC17F958D2ee523a2206206994597C13D831ec7')
 console.log('USDT balance:', tokenBalance)
+```
+
+#### `getTokenBalances(tokenAddresses)`
+Returns balances for multiple ERC20 tokens.
+
+**Parameters:**
+- `tokenAddresses` (string[]): List of ERC20 token contract addresses
+
+**Returns:** `Promise<Record<string, bigint>>` - Object mapping each token address to its balance in base units
+
+**Throws:** Error if no provider is configured
+
+**Example:**
+```javascript
+const balances = await readOnlyAccount.getTokenBalances([
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7', // USD₮
+  '0xA0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'  // USDC
+])
+console.log('Balances:', balances)
 ```
 
 #### `quoteSendTransaction(tx)`
