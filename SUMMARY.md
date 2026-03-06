@@ -5,7 +5,7 @@
 * [Welcome](README.md)
 * [About WDK](overview/about.md)
 * [Our Vision](overview/vision.md)
-* [Partner Program](overview/partner-program.md)
+* [Partner with WDK](overview/partner-program.md)
 * [Get Support](overview/support.md)
 * [Changelog](overview/changelog.md)
 * [Showcase](overview/showcase.md)
@@ -122,6 +122,7 @@
 * [Price Rates](tools/price-rates/README.md)
   * [Configuration](tools/price-rates/configuration.md)
   * [API Reference](tools/price-rates/api-reference.md)
+* [Create WDK Module](tools/create-wdk-module.md)
 
 ## Resources and Guides
 
